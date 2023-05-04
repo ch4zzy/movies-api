@@ -1,0 +1,47 @@
+live-coding-movies-app 
+
+SRS: 
+
+Develop a RESTful web service to obtain movie information. 
+
+The following information about the movie should be stored in the database: 
+
+Title 
+
+Release Date 
+
+Rating (min value - 1, max value - 5) 
+
+Genres - id, title 
+
+Actors - id, name 
+
+Similar movies 
+
+Create API endpoints to get a list of movies and detailed information about a particular movie. 
+
+The endpoint with collection of movies should return the following: 
+
+Title 
+
+Rating 
+
+Genres (id, title) 
+
+Number of actors Users should be able to order movies by release date, rating, filter by genres (multiple by ids) and search by title. Default ordering by rating (desc). 
+
+The endpoint with detailed information should return the following: 
+
+Title 
+
+Release Date 
+
+Rating 
+
+Genres (id, title) 
+
+Actors (id, name) 
+
+Similar movies (title, release date) 
+
+ 
