@@ -1,7 +1,10 @@
 import json
+import random
 from datetime import datetime
 
-from apps.movie.models import Actor, Genre, Movie, MovieActor, MovieGenre
+from django.db import transaction
+
+from apps.movie.models import Actor, Genre, Movie, MovieActor, MovieGenre, SimilarMovie
 
 
 def load_actors_from_json(file_path):
@@ -32,7 +35,6 @@ def load_movies_from_json(file_path):
     """
     with open(file_path) as file:
         data = json.load(file)
-        # item = data[0]
         for item in data:
             title = item["title"]
             rating = item["rating"]
@@ -66,13 +68,16 @@ def load_movies_from_json(file_path):
 
                 MovieActor.objects.create(movie=movie, actor=actor)
 
-        """
 
-        for genre_title in genres:
-            genre, _ = Genre.objects.get_or_create(title=genre_title)
-            MovieGenre.objects.create(movie=movie, genre=genre)
+def similarity():
+    """
+    Create random similar movies
+    """
+    movies = Movie.objects.all()
 
-        for actor_name in actors:
-            actor, _ = Actor.objects.get_or_create(name=actor_name)
-            MovieActor.objects.create(movie=movie, actor=actor)
-        """
+    with transaction.atomic():
+        for movie in movies:
+            num_similar_movies = random.randint(1, 2)
+            similar_movies = random.sample(list(movies), num_similar_movies)
+            for similar_movie in similar_movies:
+                SimilarMovie.objects.create(movie=movie, similar_movie=similar_movie)
