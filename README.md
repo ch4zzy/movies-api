@@ -1,7 +1,7 @@
 # Movie API
 This API allows you to check list and detail of movies.
 The raw data was taken from the IMDb site using a script.
-## [DATA](https://gitlab.com/ch4zzy/imdb-top250-parse).
+## [DATA](https://gitlab.com/ch4zzy/imdb-top250-parse)
 ## Endpoints
 
 ### List
