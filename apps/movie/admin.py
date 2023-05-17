@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from apps.movie.models import Actor, Genre, Movie, MovieActor, MovieGenre
+from apps.movie.models import Actor, Genre, Movie, MovieActor, MovieGenre, SimilarMovie
 
 
 @admin.register(Actor)
@@ -42,4 +42,12 @@ class MovieActorAdmin(admin.ModelAdmin):
     list_display = (
         "movie",
         "actor",
+    )
+
+
+@admin.register(SimilarMovie)
+class SimilarMovieAdmin(admin.ModelAdmin):
+    list_display = (
+        "movie",
+        "similar_movie",
     )
